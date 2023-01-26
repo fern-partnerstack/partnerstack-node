@@ -4,21 +4,28 @@
 
 import * as environments from "./environments";
 import * as core from "./core";
-import { Client as DealClient } from "./resources/deal/client/Client";
+import { Client as ActionsClient } from "./api/resources/actions/client/Client";
+import { Client as DealsClient } from "./api/resources/deals/client/Client";
 
-export declare namespace PartnerstackVendorApiClient {
-  interface Options {
-    environment?: environments.PartnerstackVendorApiEnvironment | string;
-    credentials?: core.Supplier<core.BasicAuth>;
-  }
+export declare namespace PartnerstackApiClient {
+    interface Options {
+        environment?: environments.PartnerstackApiEnvironment | string;
+        credentials?: core.Supplier<core.BasicAuth>;
+    }
 }
 
-export class PartnerstackVendorApiClient {
-  constructor(private readonly options: PartnerstackVendorApiClient.Options) {}
+export class PartnerstackApiClient {
+    constructor(private readonly options: PartnerstackApiClient.Options) {}
 
-  #deal: DealClient | undefined;
+    #actions: ActionsClient | undefined;
 
-  public get deal(): DealClient {
-    return (this.#deal ??= new DealClient(this.options));
-  }
+    public get actions(): ActionsClient {
+        return (this.#actions ??= new ActionsClient(this.options));
+    }
+
+    #deals: DealsClient | undefined;
+
+    public get deals(): DealsClient {
+        return (this.#deals ??= new DealsClient(this.options));
+    }
 }

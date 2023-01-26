@@ -1,6 +1,6 @@
 {
     "name": "@fern-api/partnerstack",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "repository": "https://github.com/fern-partnerstack/partnerstack-node",
     "files": [
         "dist",
@@ -33,7 +33,7 @@
     },
     "types": "./types/index.d.ts",
     "scripts": {
-        "format": "prettier --write --print-width 120 src/**/*.ts",
+        "format": "prettier --write src/**/*.ts",
         "compile": "tsc && tsc-alias",
         "bundle": "node build.js",
         "build": "yarn compile && yarn bundle"

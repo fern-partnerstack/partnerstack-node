@@ -1,3 +1,4 @@
-export * as PartnerstackVendorApi from "./resources";
-export { PartnerstackVendorApiClient } from "./Client";
-export { PartnerstackVendorApiEnvironment } from "./environments";
+export * as PartnerstackApi from "./api";
+export { PartnerstackApiClient } from "./Client";
+export { PartnerstackApiEnvironment } from "./environments";
+export { PartnerstackApiError, PartnerstackApiTimeoutError } from "./errors";
