@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../core";
 
 export const BaseRequestBody: core.serialization.ObjectSchema<
     serializers.BaseRequestBody.Raw,
-    PartnerstackApi.BaseRequestBody
+    PartnerStackApi.BaseRequestBody
 > = core.serialization.object({
     externalKey: core.serialization.property("external_key", core.serialization.string().optional()),
     targetKey: core.serialization.property("target_key", core.serialization.string().optional()),

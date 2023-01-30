@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../../core";
 
 export const RecordActionRequest: core.serialization.Schema<
     serializers.RecordActionRequest.Raw,
-    PartnerstackApi.RecordActionRequest
+    PartnerStackApi.RecordActionRequest
 > = core.serialization
     .object({})
     .extend(core.serialization.lazyObject(async () => (await import("../../../..")).BaseRequestBody));

@@ -3,26 +3,26 @@
  */
 
 import * as serializers from "../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../core";
 
 export const CreateDealRequestBody: core.serialization.Schema<
     serializers.CreateDealRequestBody.Raw,
-    PartnerstackApi.CreateDealRequestBody
+    PartnerStackApi.CreateDealRequestBody
 > = core.serialization
     .union("type", {
         group_key: core.serialization.lazyObject(async () => (await import("../../..")).GroupKey),
         partner_key: core.serialization.lazyObject(async () => (await import("../../..")).PartnerKey),
     })
-    .transform<PartnerstackApi.CreateDealRequestBody>({
+    .transform<PartnerStackApi.CreateDealRequestBody>({
         parse: (value) => {
             switch (value.type) {
                 case "group_key":
-                    return PartnerstackApi.CreateDealRequestBody.groupKey(value);
+                    return PartnerStackApi.CreateDealRequestBody.groupKey(value);
                 case "partner_key":
-                    return PartnerstackApi.CreateDealRequestBody.partnerKey(value);
+                    return PartnerStackApi.CreateDealRequestBody.partnerKey(value);
                 default:
-                    return PartnerstackApi.CreateDealRequestBody._unknown(value);
+                    return PartnerStackApi.CreateDealRequestBody._unknown(value);
             }
         },
         json: (value) => value as any,

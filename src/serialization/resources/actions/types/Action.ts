@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../core";
 
-export const Action: core.serialization.ObjectSchema<serializers.Action.Raw, PartnerstackApi.Action> =
+export const Action: core.serialization.ObjectSchema<serializers.Action.Raw, PartnerStackApi.Action> =
     core.serialization.object({
         archived: core.serialization.boolean().optional(),
         company: core.serialization.lazyObject(async () => (await import("../../..")).Company).optional(),

@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../core";
 
-export const TargetType: core.serialization.Schema<serializers.TargetType.Raw, PartnerstackApi.TargetType> =
+export const TargetType: core.serialization.Schema<serializers.TargetType.Raw, PartnerStackApi.TargetType> =
     core.serialization.enum_(["partnership", "customer"]);
 
 export declare namespace TargetType {

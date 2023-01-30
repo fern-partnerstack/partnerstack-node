@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
 import * as errors from "../../../../errors";
 
 export declare namespace Client {
     interface Options {
-        environment?: environments.PartnerstackApiEnvironment | string;
+        environment?: environments.PartnerStackApiEnvironment | string;
         credentials?: core.Supplier<core.BasicAuth>;
     }
 }
@@ -26,10 +26,10 @@ export class Client {
         dealKey: string,
         partnershipKey: string,
         stackKey: string
-    ): Promise<PartnerstackApi.AssignPartnershipResponse> {
+    ): Promise<PartnerStackApi.AssignPartnershipResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.PartnerstackApiEnvironment.Production,
+                this.options.environment ?? environments.PartnerStackApiEnvironment.Production,
                 `/deals/${dealKey}/assignment/${partnershipKey}/${stackKey}`
             ),
             method: "POST",
@@ -44,7 +44,7 @@ export class Client {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.PartnerstackApiError({
+            throw new errors.PartnerStackApiError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
             });
@@ -52,14 +52,14 @@ export class Client {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.PartnerstackApiTimeoutError();
+                throw new errors.PartnerStackApiTimeoutError();
             case "unknown":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     message: _response.error.errorMessage,
                 });
         }
@@ -68,10 +68,10 @@ export class Client {
     /**
      * Get the file for the deal.
      */
-    public async getDealFile(dealKey: string, fileKey: string): Promise<PartnerstackApi.DealFileResponse> {
+    public async getDealFile(dealKey: string, fileKey: string): Promise<PartnerStackApi.DealFileResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.PartnerstackApiEnvironment.Production,
+                this.options.environment ?? environments.PartnerStackApiEnvironment.Production,
                 `/deals/${dealKey}/file/${fileKey}`
             ),
             method: "GET",
@@ -84,7 +84,7 @@ export class Client {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.PartnerstackApiError({
+            throw new errors.PartnerStackApiError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
             });
@@ -92,14 +92,14 @@ export class Client {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.PartnerstackApiTimeoutError();
+                throw new errors.PartnerStackApiTimeoutError();
             case "unknown":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     message: _response.error.errorMessage,
                 });
         }
@@ -111,8 +111,8 @@ export class Client {
      *     appearing first.
      */
     public async listAllDeals(
-        request: PartnerstackApi.ListAllDealsRequest = {}
-    ): Promise<PartnerstackApi.ListAllDealsResponse> {
+        request: PartnerStackApi.ListAllDealsRequest = {}
+    ): Promise<PartnerStackApi.ListAllDealsResponse> {
         const {
             minCreated,
             maxCreated,
@@ -162,7 +162,7 @@ export class Client {
         }
 
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.PartnerstackApiEnvironment.Production, "/v2/deals"),
+            url: urlJoin(this.options.environment ?? environments.PartnerStackApiEnvironment.Production, "/v2/deals"),
             method: "GET",
             headers: {
                 Authorization: core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(this.options.credentials)),
@@ -174,7 +174,7 @@ export class Client {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.PartnerstackApiError({
+            throw new errors.PartnerStackApiError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
             });
@@ -182,14 +182,14 @@ export class Client {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.PartnerstackApiTimeoutError();
+                throw new errors.PartnerStackApiTimeoutError();
             case "unknown":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     message: _response.error.errorMessage,
                 });
         }
@@ -198,9 +198,9 @@ export class Client {
     /**
      * Creates a deal with desired params.
      */
-    public async create(request: PartnerstackApi.CreateDealRequestBody): Promise<PartnerstackApi.DealResponse> {
+    public async create(request: PartnerStackApi.CreateDealRequestBody): Promise<PartnerStackApi.DealResponse> {
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.PartnerstackApiEnvironment.Production, "/v2/deals"),
+            url: urlJoin(this.options.environment ?? environments.PartnerStackApiEnvironment.Production, "/v2/deals"),
             method: "POST",
             headers: {
                 Authorization: core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(this.options.credentials)),
@@ -212,7 +212,7 @@ export class Client {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.PartnerstackApiError({
+            throw new errors.PartnerStackApiError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
             });
@@ -220,14 +220,14 @@ export class Client {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.PartnerstackApiTimeoutError();
+                throw new errors.PartnerStackApiTimeoutError();
             case "unknown":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     message: _response.error.errorMessage,
                 });
         }
@@ -237,8 +237,8 @@ export class Client {
      * Fetches the specified form templates for a deal.
      */
     public async getFormTemplate(
-        request: PartnerstackApi.GetFormTemplateRequest = {}
-    ): Promise<PartnerstackApi.FormTemplateResponse> {
+        request: PartnerStackApi.GetFormTemplateRequest = {}
+    ): Promise<PartnerStackApi.FormTemplateResponse> {
         const { groupKey, moldKey, partnerKey } = request;
         const _queryParams = new URLSearchParams();
         if (groupKey != null) {
@@ -255,7 +255,7 @@ export class Client {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.PartnerstackApiEnvironment.Production,
+                this.options.environment ?? environments.PartnerStackApiEnvironment.Production,
                 "/v2/deals/form-templates"
             ),
             method: "GET",
@@ -269,7 +269,7 @@ export class Client {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.PartnerstackApiError({
+            throw new errors.PartnerStackApiError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
             });
@@ -277,14 +277,14 @@ export class Client {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.PartnerstackApiTimeoutError();
+                throw new errors.PartnerStackApiTimeoutError();
             case "unknown":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     message: _response.error.errorMessage,
                 });
         }
@@ -293,10 +293,10 @@ export class Client {
     /**
      * Retrieves the details of an existing deal. You need only supply the unique deal key that was returned upon deal creation.
      */
-    public async get(dealKey: string): Promise<PartnerstackApi.DealResponse> {
+    public async get(dealKey: string): Promise<PartnerStackApi.DealResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.PartnerstackApiEnvironment.Production,
+                this.options.environment ?? environments.PartnerStackApiEnvironment.Production,
                 `/v2/deals/${dealKey}`
             ),
             method: "GET",
@@ -309,7 +309,7 @@ export class Client {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.PartnerstackApiError({
+            throw new errors.PartnerStackApiError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
             });
@@ -317,14 +317,14 @@ export class Client {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.PartnerstackApiTimeoutError();
+                throw new errors.PartnerStackApiTimeoutError();
             case "unknown":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     message: _response.error.errorMessage,
                 });
         }
@@ -333,10 +333,10 @@ export class Client {
     /**
      * Archives the specified deal
      */
-    public async delete(dealKey: string): Promise<PartnerstackApi.BaseResponse> {
+    public async delete(dealKey: string): Promise<PartnerStackApi.BaseResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.PartnerstackApiEnvironment.Production,
+                this.options.environment ?? environments.PartnerStackApiEnvironment.Production,
                 `/v2/deals/${dealKey}`
             ),
             method: "DELETE",
@@ -349,7 +349,7 @@ export class Client {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.PartnerstackApiError({
+            throw new errors.PartnerStackApiError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
             });
@@ -357,14 +357,14 @@ export class Client {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.PartnerstackApiTimeoutError();
+                throw new errors.PartnerStackApiTimeoutError();
             case "unknown":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     message: _response.error.errorMessage,
                 });
         }
@@ -377,11 +377,11 @@ export class Client {
      */
     public async update(
         dealKey: string,
-        request: PartnerstackApi.UpdateDealRequest = {}
-    ): Promise<PartnerstackApi.DealResponse> {
+        request: PartnerStackApi.UpdateDealRequest = {}
+    ): Promise<PartnerStackApi.DealResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.PartnerstackApiEnvironment.Production,
+                this.options.environment ?? environments.PartnerStackApiEnvironment.Production,
                 `/v2/deals/${dealKey}`
             ),
             method: "PATCH",
@@ -395,7 +395,7 @@ export class Client {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.PartnerstackApiError({
+            throw new errors.PartnerStackApiError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
             });
@@ -403,14 +403,14 @@ export class Client {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.PartnerstackApiTimeoutError();
+                throw new errors.PartnerStackApiTimeoutError();
             case "unknown":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     message: _response.error.errorMessage,
                 });
         }
@@ -421,11 +421,11 @@ export class Client {
      */
     public async convertDealToCustomer(
         dealKey: string,
-        request: PartnerstackApi.ConvertDealToCustomerRequest
+        request: PartnerStackApi.ConvertDealToCustomerRequest
     ): Promise<unknown> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.PartnerstackApiEnvironment.Production,
+                this.options.environment ?? environments.PartnerStackApiEnvironment.Production,
                 `/v2/deals/${dealKey}/convert`
             ),
             method: "POST",
@@ -439,7 +439,7 @@ export class Client {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.PartnerstackApiError({
+            throw new errors.PartnerStackApiError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
             });
@@ -447,14 +447,14 @@ export class Client {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.PartnerstackApiTimeoutError();
+                throw new errors.PartnerStackApiTimeoutError();
             case "unknown":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     message: _response.error.errorMessage,
                 });
         }
@@ -463,10 +463,10 @@ export class Client {
     /**
      * Gets the files attached to the specified deal
      */
-    public async getDealFiles(dealKey: string): Promise<PartnerstackApi.DealFilesResponse> {
+    public async getDealFiles(dealKey: string): Promise<PartnerStackApi.DealFilesResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.PartnerstackApiEnvironment.Production,
+                this.options.environment ?? environments.PartnerStackApiEnvironment.Production,
                 `/v2/deals/${dealKey}/files`
             ),
             method: "GET",
@@ -479,7 +479,7 @@ export class Client {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.PartnerstackApiError({
+            throw new errors.PartnerStackApiError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
             });
@@ -487,14 +487,14 @@ export class Client {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.PartnerstackApiTimeoutError();
+                throw new errors.PartnerStackApiTimeoutError();
             case "unknown":
-                throw new errors.PartnerstackApiError({
+                throw new errors.PartnerStackApiError({
                     message: _response.error.errorMessage,
                 });
         }

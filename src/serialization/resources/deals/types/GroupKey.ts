@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../core";
 
-export const GroupKey: core.serialization.ObjectSchema<serializers.GroupKey.Raw, PartnerstackApi.GroupKey> =
+export const GroupKey: core.serialization.ObjectSchema<serializers.GroupKey.Raw, PartnerStackApi.GroupKey> =
     core.serialization
         .object({
             groupKey: core.serialization.property("group_key", core.serialization.string()),

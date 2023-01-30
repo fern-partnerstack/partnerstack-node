@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../core";
 
-export const DealSource: core.serialization.Schema<serializers.DealSource.Raw, PartnerstackApi.DealSource> =
+export const DealSource: core.serialization.Schema<serializers.DealSource.Raw, PartnerStackApi.DealSource> =
     core.serialization.enum_(["partner", "vendor"]);
 
 export declare namespace DealSource {

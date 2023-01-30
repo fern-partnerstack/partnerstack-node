@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../core";
 
-export const BaseKey: core.serialization.ObjectSchema<serializers.BaseKey.Raw, PartnerstackApi.BaseKey> =
+export const BaseKey: core.serialization.ObjectSchema<serializers.BaseKey.Raw, PartnerStackApi.BaseKey> =
     core.serialization.object({
         accountName: core.serialization.property("account_name", core.serialization.string().optional()),
         amount: core.serialization.number().optional(),

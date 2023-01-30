@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../core";
 
 export const ListAllActionsData: core.serialization.ObjectSchema<
     serializers.ListAllActionsData.Raw,
-    PartnerstackApi.ListAllActionsData
+    PartnerStackApi.ListAllActionsData
 > = core.serialization.object({
     hasMore: core.serialization.property("has_more", core.serialization.boolean().optional()),
     items: core.serialization

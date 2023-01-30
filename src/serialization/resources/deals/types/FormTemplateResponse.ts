@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../core";
 
 export const FormTemplateResponse: core.serialization.ObjectSchema<
     serializers.FormTemplateResponse.Raw,
-    PartnerstackApi.FormTemplateResponse
+    PartnerStackApi.FormTemplateResponse
 > = core.serialization
     .object({
         data: core.serialization.list(

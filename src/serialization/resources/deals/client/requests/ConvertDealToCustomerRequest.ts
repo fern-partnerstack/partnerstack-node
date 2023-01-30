@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../../core";
 
 export const ConvertDealToCustomerRequest: core.serialization.Schema<
     serializers.ConvertDealToCustomerRequest.Raw,
-    PartnerstackApi.ConvertDealToCustomerRequest
+    PartnerStackApi.ConvertDealToCustomerRequest
 > = core.serialization.object({
     customerKey: core.serialization.property("customer_key", core.serialization.string().optional()),
     email: core.serialization.string(),

@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../../core";
 
 export const UpdateDealRequest: core.serialization.Schema<
     serializers.UpdateDealRequest.Raw,
-    PartnerstackApi.UpdateDealRequest
+    PartnerStackApi.UpdateDealRequest
 > = core.serialization.object({
     accountName: core.serialization.property("account_name", core.serialization.string().optional()),
     amount: core.serialization.number().optional(),

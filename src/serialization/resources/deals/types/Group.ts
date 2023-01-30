@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../core";
 
-export const Group: core.serialization.ObjectSchema<serializers.Group.Raw, PartnerstackApi.Group> =
+export const Group: core.serialization.ObjectSchema<serializers.Group.Raw, PartnerStackApi.Group> =
     core.serialization.object({
         archived: core.serialization.boolean().optional(),
         default: core.serialization.boolean().optional(),

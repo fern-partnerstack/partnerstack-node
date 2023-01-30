@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../core";
 
-export const TeamMember: core.serialization.ObjectSchema<serializers.TeamMember.Raw, PartnerstackApi.TeamMember> =
+export const TeamMember: core.serialization.ObjectSchema<serializers.TeamMember.Raw, PartnerStackApi.TeamMember> =
     core.serialization
         .object({
             email: core.serialization.string().optional(),

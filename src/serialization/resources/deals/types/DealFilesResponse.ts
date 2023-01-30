@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../core";
 
 export const DealFilesResponse: core.serialization.ObjectSchema<
     serializers.DealFilesResponse.Raw,
-    PartnerstackApi.DealFilesResponse
+    PartnerStackApi.DealFilesResponse
 > = core.serialization
     .object({
         data: core.serialization.lazyObject(async () => (await import("../../..")).DealFilesData),

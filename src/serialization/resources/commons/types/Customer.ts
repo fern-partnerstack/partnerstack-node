@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../core";
 
-export const Customer: core.serialization.ObjectSchema<serializers.Customer.Raw, PartnerstackApi.Customer> =
+export const Customer: core.serialization.ObjectSchema<serializers.Customer.Raw, PartnerStackApi.Customer> =
     core.serialization.object({
         key: core.serialization.string().optional(),
         subIds: core.serialization.property("sub_ids", core.serialization.list(core.serialization.string()).optional()),

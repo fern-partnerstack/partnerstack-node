@@ -1,2 +1,2 @@
-export { PartnerstackApiError } from "./PartnerstackApiError";
-export { PartnerstackApiTimeoutError } from "./PartnerstackApiTimeoutError";
+export { PartnerStackApiError } from "./PartnerStackApiError";
+export { PartnerStackApiTimeoutError } from "./PartnerStackApiTimeoutError";

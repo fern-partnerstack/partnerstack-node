@@ -7,15 +7,15 @@ import * as core from "./core";
 import { Client as ActionsClient } from "./api/resources/actions/client/Client";
 import { Client as DealsClient } from "./api/resources/deals/client/Client";
 
-export declare namespace PartnerstackApiClient {
+export declare namespace PartnerStackApiClient {
     interface Options {
-        environment?: environments.PartnerstackApiEnvironment | string;
+        environment?: environments.PartnerStackApiEnvironment | string;
         credentials?: core.Supplier<core.BasicAuth>;
     }
 }
 
-export class PartnerstackApiClient {
-    constructor(private readonly options: PartnerstackApiClient.Options) {}
+export class PartnerStackApiClient {
+    constructor(private readonly options: PartnerStackApiClient.Options) {}
 
     #actions: ActionsClient | undefined;
 

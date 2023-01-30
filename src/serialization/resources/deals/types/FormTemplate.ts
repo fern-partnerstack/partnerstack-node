@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import { PartnerstackApi } from "@fern-api/partnerstack";
+import { PartnerStackApi } from "@fern-api/partnerstack";
 import * as core from "../../../../core";
 
-export const FormTemplate: core.serialization.ObjectSchema<serializers.FormTemplate.Raw, PartnerstackApi.FormTemplate> =
+export const FormTemplate: core.serialization.ObjectSchema<serializers.FormTemplate.Raw, PartnerStackApi.FormTemplate> =
     core.serialization.object({
         description: core.serialization.string().optional(),
         fields: core.serialization

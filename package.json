@@ -1,6 +1,6 @@
 {
     "name": "@fern-api/partnerstack",
-    "version": "0.0.5",
+    "version": "0.0.7",
     "repository": "https://github.com/fern-partnerstack/partnerstack-node",
     "files": [
         "dist",
