@@ -13,9 +13,25 @@ API documentation is available at <https://docs.partnerstack.com/reference>.
 [![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](TODO)
 
 ```typescript
-import { TODO } from "TODO";
+import { PartnerStackApi, PartnerStackApiClient } from '@fern-api/partnerstack';
 
-const TODO
+const credentials = { username: 'my-username', password: 'my-password' };
+const client = new PartnerStackApiClient({
+  credentials: () => credentials,
+});
+
+const response = await client.deals.create(
+  PartnerStackApi.CreateDealRequestBody.partnerKey({
+    partnerKey: 'my-partner-key',
+    accountName: 'Account0123',
+    amount: 150000,
+    closeDate: '2023-02-25',
+    contactFirstName: 'Danny',
+    contactLastName: 'Fern'
+  })
+);
+
+console.log('Received response from PartnerStack!', response);
 ```
 
 ## Beta status
