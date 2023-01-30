@@ -12,7 +12,9 @@ export const FormTemplate: core.serialization.ObjectSchema<serializers.FormTempl
         fields: core.serialization
             .list(core.serialization.lazyObject(async () => (await import("../../..")).FieldData))
             .optional(),
-        groups: core.serialization.list(core.serialization.unknown()).optional(),
+        groups: core.serialization
+            .list(core.serialization.lazyObject(async () => (await import("../../..")).Group))
+            .optional(),
         name: core.serialization.string().optional(),
         title: core.serialization.string().optional(),
         type: core.serialization.string().optional(),
@@ -22,7 +24,7 @@ export declare namespace FormTemplate {
     interface Raw {
         description?: string | null;
         fields?: serializers.FieldData.Raw[] | null;
-        groups?: unknown[] | null;
+        groups?: serializers.Group.Raw[] | null;
         name?: string | null;
         title?: string | null;
         type?: string | null;

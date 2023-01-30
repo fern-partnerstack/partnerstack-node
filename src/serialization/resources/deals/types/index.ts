@@ -1,3 +1,6 @@
+export * from "./CustomerResponseData";
+export * from "./CustomerResponse";
+export * from "./CustomerObject";
 export * from "./DealFileData";
 export * from "./DealFileResponse";
 export * from "./DealObject";
@@ -23,3 +26,4 @@ export * from "./CreateDealRequestBody";
 export * from "./BaseKey";
 export * from "./GroupKey";
 export * from "./PartnerKey";
+export * from "./Group";

@@ -11,7 +11,7 @@ export interface FormTemplate {
     /** A description for users to better understand the form */
     description?: string;
     fields?: PartnerstackApi.FieldData[];
-    groups?: unknown[];
+    groups?: PartnerstackApi.Group[];
     /** The presented name of this form */
     name?: string;
     /** A title to display to users when they fill out the form */

@@ -46,7 +46,7 @@ export class Client {
         if (_response.error.reason === "status-code") {
             throw new errors.PartnerstackApiError({
                 statusCode: _response.error.statusCode,
-                responseBody: _response.error.rawBody,
+                body: _response.error.body,
             });
         }
 
@@ -54,7 +54,7 @@ export class Client {
             case "non-json":
                 throw new errors.PartnerstackApiError({
                     statusCode: _response.error.statusCode,
-                    responseBody: _response.error.rawBody,
+                    body: _response.error.rawBody,
                 });
             case "timeout":
                 throw new errors.PartnerstackApiTimeoutError();
@@ -86,7 +86,7 @@ export class Client {
         if (_response.error.reason === "status-code") {
             throw new errors.PartnerstackApiError({
                 statusCode: _response.error.statusCode,
-                responseBody: _response.error.rawBody,
+                body: _response.error.body,
             });
         }
 
@@ -94,7 +94,7 @@ export class Client {
             case "non-json":
                 throw new errors.PartnerstackApiError({
                     statusCode: _response.error.statusCode,
-                    responseBody: _response.error.rawBody,
+                    body: _response.error.rawBody,
                 });
             case "timeout":
                 throw new errors.PartnerstackApiTimeoutError();
@@ -111,43 +111,54 @@ export class Client {
      *     appearing first.
      */
     public async listAllDeals(
-        request?: PartnerstackApi.ListAllDealsRequest
+        request: PartnerstackApi.ListAllDealsRequest = {}
     ): Promise<PartnerstackApi.ListAllDealsResponse> {
+        const {
+            minCreated,
+            maxCreated,
+            minUpdated,
+            maxUpdated,
+            group,
+            partnerKey,
+            limit,
+            startingAfter,
+            endingBefore,
+        } = request;
         const _queryParams = new URLSearchParams();
-        if (request?.minCreated != null) {
-            _queryParams.append("min_created", request?.minCreated.toString());
+        if (minCreated != null) {
+            _queryParams.append("min_created", minCreated.toString());
         }
 
-        if (request?.maxCreated != null) {
-            _queryParams.append("max_created", request?.maxCreated.toString());
+        if (maxCreated != null) {
+            _queryParams.append("max_created", maxCreated.toString());
         }
 
-        if (request?.minUpdated != null) {
-            _queryParams.append("min_updated", request?.minUpdated.toString());
+        if (minUpdated != null) {
+            _queryParams.append("min_updated", minUpdated.toString());
         }
 
-        if (request?.maxUpdated != null) {
-            _queryParams.append("max_updated", request?.maxUpdated.toString());
+        if (maxUpdated != null) {
+            _queryParams.append("max_updated", maxUpdated.toString());
         }
 
-        if (request?.group != null) {
-            _queryParams.append("group", request?.group);
+        if (group != null) {
+            _queryParams.append("group", group);
         }
 
-        if (request?.partnerKey != null) {
-            _queryParams.append("partner_key", request?.partnerKey);
+        if (partnerKey != null) {
+            _queryParams.append("partner_key", partnerKey);
         }
 
-        if (request?.limit != null) {
-            _queryParams.append("limit", request?.limit.toString());
+        if (limit != null) {
+            _queryParams.append("limit", limit.toString());
         }
 
-        if (request?.startingAfter != null) {
-            _queryParams.append("starting_after", request?.startingAfter);
+        if (startingAfter != null) {
+            _queryParams.append("starting_after", startingAfter);
         }
 
-        if (request?.endingBefore != null) {
-            _queryParams.append("ending_before", request?.endingBefore);
+        if (endingBefore != null) {
+            _queryParams.append("ending_before", endingBefore);
         }
 
         const _response = await core.fetcher({
@@ -165,7 +176,7 @@ export class Client {
         if (_response.error.reason === "status-code") {
             throw new errors.PartnerstackApiError({
                 statusCode: _response.error.statusCode,
-                responseBody: _response.error.rawBody,
+                body: _response.error.body,
             });
         }
 
@@ -173,7 +184,7 @@ export class Client {
             case "non-json":
                 throw new errors.PartnerstackApiError({
                     statusCode: _response.error.statusCode,
-                    responseBody: _response.error.rawBody,
+                    body: _response.error.rawBody,
                 });
             case "timeout":
                 throw new errors.PartnerstackApiTimeoutError();
@@ -203,7 +214,7 @@ export class Client {
         if (_response.error.reason === "status-code") {
             throw new errors.PartnerstackApiError({
                 statusCode: _response.error.statusCode,
-                responseBody: _response.error.rawBody,
+                body: _response.error.body,
             });
         }
 
@@ -211,7 +222,7 @@ export class Client {
             case "non-json":
                 throw new errors.PartnerstackApiError({
                     statusCode: _response.error.statusCode,
-                    responseBody: _response.error.rawBody,
+                    body: _response.error.rawBody,
                 });
             case "timeout":
                 throw new errors.PartnerstackApiTimeoutError();
@@ -226,19 +237,20 @@ export class Client {
      * Fetches the specified form templates for a deal.
      */
     public async getFormTemplate(
-        request?: PartnerstackApi.GetFormTemplateRequest
+        request: PartnerstackApi.GetFormTemplateRequest = {}
     ): Promise<PartnerstackApi.FormTemplateResponse> {
+        const { groupKey, moldKey, partnerKey } = request;
         const _queryParams = new URLSearchParams();
-        if (request?.groupKey != null) {
-            _queryParams.append("group_key", request?.groupKey);
+        if (groupKey != null) {
+            _queryParams.append("group_key", groupKey);
         }
 
-        if (request?.moldKey != null) {
-            _queryParams.append("mold_key", request?.moldKey);
+        if (moldKey != null) {
+            _queryParams.append("mold_key", moldKey);
         }
 
-        if (request?.partnerKey != null) {
-            _queryParams.append("partner_key", request?.partnerKey);
+        if (partnerKey != null) {
+            _queryParams.append("partner_key", partnerKey);
         }
 
         const _response = await core.fetcher({
@@ -259,7 +271,7 @@ export class Client {
         if (_response.error.reason === "status-code") {
             throw new errors.PartnerstackApiError({
                 statusCode: _response.error.statusCode,
-                responseBody: _response.error.rawBody,
+                body: _response.error.body,
             });
         }
 
@@ -267,7 +279,7 @@ export class Client {
             case "non-json":
                 throw new errors.PartnerstackApiError({
                     statusCode: _response.error.statusCode,
-                    responseBody: _response.error.rawBody,
+                    body: _response.error.rawBody,
                 });
             case "timeout":
                 throw new errors.PartnerstackApiTimeoutError();
@@ -299,7 +311,7 @@ export class Client {
         if (_response.error.reason === "status-code") {
             throw new errors.PartnerstackApiError({
                 statusCode: _response.error.statusCode,
-                responseBody: _response.error.rawBody,
+                body: _response.error.body,
             });
         }
 
@@ -307,7 +319,7 @@ export class Client {
             case "non-json":
                 throw new errors.PartnerstackApiError({
                     statusCode: _response.error.statusCode,
-                    responseBody: _response.error.rawBody,
+                    body: _response.error.rawBody,
                 });
             case "timeout":
                 throw new errors.PartnerstackApiTimeoutError();
@@ -339,7 +351,7 @@ export class Client {
         if (_response.error.reason === "status-code") {
             throw new errors.PartnerstackApiError({
                 statusCode: _response.error.statusCode,
-                responseBody: _response.error.rawBody,
+                body: _response.error.body,
             });
         }
 
@@ -347,7 +359,7 @@ export class Client {
             case "non-json":
                 throw new errors.PartnerstackApiError({
                     statusCode: _response.error.statusCode,
-                    responseBody: _response.error.rawBody,
+                    body: _response.error.rawBody,
                 });
             case "timeout":
                 throw new errors.PartnerstackApiTimeoutError();
@@ -365,7 +377,7 @@ export class Client {
      */
     public async update(
         dealKey: string,
-        request?: PartnerstackApi.UpdateDealRequest
+        request: PartnerstackApi.UpdateDealRequest = {}
     ): Promise<PartnerstackApi.DealResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -376,23 +388,7 @@ export class Client {
             headers: {
                 Authorization: core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(this.options.credentials)),
             },
-            body: await serializers.UpdateDealRequest.json({
-                accountName: request?.accountName,
-                amount: request?.amount,
-                closeDate: request?.closeDate,
-                contactFirstName: request?.contactFirstName,
-                contactLastName: request?.contactLastName,
-                externalKey: request?.externalKey,
-                fields: request?.fields,
-                groupKey: request?.groupKey,
-                lostReason: request?.lostReason,
-                moldKey: request?.moldKey,
-                partnerKey: request?.partnerKey,
-                source: request?.source,
-                stage: request?.stage,
-                team: request?.team,
-                teamMember: request?.teamMember,
-            }),
+            body: await serializers.UpdateDealRequest.json(request),
         });
         if (_response.ok) {
             return await serializers.DealResponse.parse(_response.body as serializers.DealResponse.Raw);
@@ -401,7 +397,7 @@ export class Client {
         if (_response.error.reason === "status-code") {
             throw new errors.PartnerstackApiError({
                 statusCode: _response.error.statusCode,
-                responseBody: _response.error.rawBody,
+                body: _response.error.body,
             });
         }
 
@@ -409,7 +405,7 @@ export class Client {
             case "non-json":
                 throw new errors.PartnerstackApiError({
                     statusCode: _response.error.statusCode,
-                    responseBody: _response.error.rawBody,
+                    body: _response.error.rawBody,
                 });
             case "timeout":
                 throw new errors.PartnerstackApiTimeoutError();
@@ -436,10 +432,7 @@ export class Client {
             headers: {
                 Authorization: core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(this.options.credentials)),
             },
-            body: await serializers.ConvertDealToCustomerRequest.json({
-                customerKey: request.customerKey,
-                email: request.email,
-            }),
+            body: await serializers.ConvertDealToCustomerRequest.json(request),
         });
         if (_response.ok) {
             return _response.body;
@@ -448,7 +441,7 @@ export class Client {
         if (_response.error.reason === "status-code") {
             throw new errors.PartnerstackApiError({
                 statusCode: _response.error.statusCode,
-                responseBody: _response.error.rawBody,
+                body: _response.error.body,
             });
         }
 
@@ -456,7 +449,7 @@ export class Client {
             case "non-json":
                 throw new errors.PartnerstackApiError({
                     statusCode: _response.error.statusCode,
-                    responseBody: _response.error.rawBody,
+                    body: _response.error.rawBody,
                 });
             case "timeout":
                 throw new errors.PartnerstackApiTimeoutError();
@@ -488,7 +481,7 @@ export class Client {
         if (_response.error.reason === "status-code") {
             throw new errors.PartnerstackApiError({
                 statusCode: _response.error.statusCode,
-                responseBody: _response.error.rawBody,
+                body: _response.error.body,
             });
         }
 
@@ -496,7 +489,7 @@ export class Client {
             case "non-json":
                 throw new errors.PartnerstackApiError({
                     statusCode: _response.error.statusCode,
-                    responseBody: _response.error.rawBody,
+                    body: _response.error.rawBody,
                 });
             case "timeout":
                 throw new errors.PartnerstackApiTimeoutError();
