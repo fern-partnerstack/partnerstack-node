@@ -24,6 +24,4 @@ export * from "./DealSource";
 export * from "./TeamMember";
 export * from "./CreateDealRequestBody";
 export * from "./BaseKey";
-export * from "./GroupKey";
-export * from "./PartnerKey";
 export * from "./Group";

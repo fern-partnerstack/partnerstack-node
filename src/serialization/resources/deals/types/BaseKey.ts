@@ -8,6 +8,8 @@ import * as core from "../../../../core";
 
 export const BaseKey: core.serialization.ObjectSchema<serializers.BaseKey.Raw, PartnerStackApi.BaseKey> =
     core.serialization.object({
+        groupKey: core.serialization.property("group_key", core.serialization.string().optional()),
+        partnerKey: core.serialization.property("partner_key", core.serialization.string().optional()),
         accountName: core.serialization.property("account_name", core.serialization.string().optional()),
         amount: core.serialization.number().optional(),
         closeDate: core.serialization.property("close_date", core.serialization.string().optional()),
@@ -25,6 +27,8 @@ export const BaseKey: core.serialization.ObjectSchema<serializers.BaseKey.Raw, P
 
 export declare namespace BaseKey {
     interface Raw {
+        group_key?: string | null;
+        partner_key?: string | null;
         account_name?: string | null;
         amount?: number | null;
         close_date?: string | null;

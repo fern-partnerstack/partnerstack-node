@@ -9,33 +9,8 @@ import * as core from "../../../../core";
 export const CreateDealRequestBody: core.serialization.Schema<
     serializers.CreateDealRequestBody.Raw,
     PartnerStackApi.CreateDealRequestBody
-> = core.serialization
-    .union("type", {
-        group_key: core.serialization.lazyObject(async () => (await import("../../..")).GroupKey),
-        partner_key: core.serialization.lazyObject(async () => (await import("../../..")).PartnerKey),
-    })
-    .transform<PartnerStackApi.CreateDealRequestBody>({
-        parse: (value) => {
-            switch (value.type) {
-                case "group_key":
-                    return PartnerStackApi.CreateDealRequestBody.groupKey(value);
-                case "partner_key":
-                    return PartnerStackApi.CreateDealRequestBody.partnerKey(value);
-                default:
-                    return PartnerStackApi.CreateDealRequestBody._unknown(value);
-            }
-        },
-        json: (value) => value as any,
-    });
+> = core.serialization.lazyObject(async () => (await import("../../..")).BaseKey);
 
 export declare namespace CreateDealRequestBody {
-    type Raw = CreateDealRequestBody.GroupKey | CreateDealRequestBody.PartnerKey;
-
-    interface GroupKey extends serializers.GroupKey.Raw {
-        type: "group_key";
-    }
-
-    interface PartnerKey extends serializers.PartnerKey.Raw {
-        type: "partner_key";
-    }
+    type Raw = serializers.BaseKey.Raw;
 }

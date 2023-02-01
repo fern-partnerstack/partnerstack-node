@@ -5,6 +5,10 @@
 import { PartnerStackApi } from "@fern-api/partnerstack";
 
 export interface BaseKey {
+    /** A group key */
+    groupKey?: string;
+    /** A partner key */
+    partnerKey?: string;
     /** Name of the account */
     accountName?: string;
     /** Deal amount in **cents** */
